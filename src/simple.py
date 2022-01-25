@@ -79,7 +79,16 @@ class MyFrame(wx.Frame):
 
 class MyApp(AppBaseClass):
     def OnInit(self):
-        pass
+        frame = MyFrame(None, "Simple wxPython App")
+        self.SetTopWindow(frame)
+
+        print("Print statements go to this stdout window by default.")
+        if USE_WIT:
+            print("Press Ctrl-Alt-I (Cmd-Opt-I on Mac) to launch the WITH.")
+            self.InitInspection()
+
+        frame.Show(True)
+        return True
 
 
 def main():
