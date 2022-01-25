@@ -7,7 +7,9 @@ print_(wx.version())
 
 class MyFrame(wx.Frame):
     def __init__(self, *args, **kw):
-        pass
+        super(MyFrame, self).__init__(*args, **kw)
+        self.Bind(wx.EVT_SIZE, self.onSize)
+        wx.CallAfter(self.after, 1, 2, 3)
 
     def after(self, a, b, c):
         pass
