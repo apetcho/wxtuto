@@ -208,7 +208,14 @@ class PolygonEditor(wx.App):
     """A simple example of making editable shapes with FloatCanvas."""
 
     def OnInit(self):
-        pass
+        frame = DrawFrame(
+            None, -1, "FloatCanvas Demo App", wx.DefaultPosition,
+            (700, 700),
+        )
+        self.SetTopWindow(frame)
+        frame.Show()
+        frame.setup()
+        return True
 
 
 def main():
