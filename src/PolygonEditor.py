@@ -188,7 +188,15 @@ class DrawFrame(wx.Frame):
             canvas.Draw()
 
     def deselectPolygon(self):
-        pass
+        canvas = self.canvas
+        if self.selectedPoygonOrig is not None:
+            self.selectedPoygonOrig.SetPoints(
+                self.selectedPolygon.Points, copy=False
+            )
+            self.canvas.Draw(Force=True)
+            canvas.RemoveObject(self.selectedPolygon)
+            canvas.RemoveObject(self.selectedPoints)
+        self.resetSelections()
 
     def selectPointHit(self, pointSet):
         pass
