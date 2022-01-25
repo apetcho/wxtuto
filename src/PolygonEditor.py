@@ -145,7 +145,8 @@ class DrawFrame(wx.Frame):
             self.canvas.Draw()
 
     def onLeftClick(self, event: wx.Event):
-        pass
+        self.deselectPolygon()
+        self.canvas.Draw()
 
     def setup(self, event: wx.Event=None):
         pass
