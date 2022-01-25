@@ -85,7 +85,7 @@ class DrawFrame(wx.Frame):
         self.canvas.Draw()
 
     def onQuit(self, event: wx.Event):
-        pass
+        self.Close(True)
 
     def onCloseWindow(self, event: wx.Event):
         pass
