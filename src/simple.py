@@ -68,7 +68,9 @@ class MyFrame(wx.Frame):
         self.CenterOnScreen(wx.BOTH)
 
     def OnTimeToClose(self, event):
-        pass
+        """Event handler for the button click"""
+        print("See ya later!")
+        self.Close()
 
     def OnFunButton(self, event):
         pass
