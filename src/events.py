@@ -32,7 +32,8 @@ class MyApp(wx.App):
 
 
 def main():
-    pass
+    app = MyApp()
+    app.MainLoop()
 
 
 if __name__ == "__main__":
