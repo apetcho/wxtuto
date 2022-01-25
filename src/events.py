@@ -12,7 +12,7 @@ class MyFrame(wx.Frame):
         wx.CallAfter(self.after, 1, 2, 3)
 
     def after(self, a, b, c):
-        pass
+        print_(f"Called via wx.CallAfter: {a}, {b}, {c}")
 
     def onSize(self, event):
         pass
