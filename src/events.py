@@ -14,8 +14,9 @@ class MyFrame(wx.Frame):
     def after(self, a, b, c):
         print_(f"Called via wx.CallAfter: {a}, {b}, {c}")
 
-    def onSize(self, event):
-        pass
+    def onSize(self, event: wx.Event):
+        print_(repr(event.Size))
+        event.Skip()
 
 
 class MyApp(wx.App):
