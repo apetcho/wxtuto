@@ -58,7 +58,11 @@ class DrawFrame(wx.Frame):
         self.resetSelections()
 
     def resetSelections(self):
-        pass
+        self.selectedPolygon = None
+        self.selectedPoygonOrig = None
+        self.selectedPoints = None
+        self.pointSelected = False
+        self.selectedPointNeighbors = None
 
     def onAbout(self, event: wx.Event):
         pass
