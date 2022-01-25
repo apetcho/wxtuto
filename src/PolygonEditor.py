@@ -149,7 +149,23 @@ class DrawFrame(wx.Frame):
         self.canvas.Draw()
 
     def setup(self, event: wx.Event=None):
-        pass
+        """Setting up with some random polygons"""
+        wx.GetApp().Yield()
+        self.resetSelections()
+        self.canvas.ClearAll()
+
+        _range = (-10, 10)
+
+        # create a couple of random Polygons
+        colors = ("Light Blue", "Green", "Purple", "Yellow")
+        for color in colors:
+            points = RandomArray.uniform(_range[0], _range[1], (6, 2))
+            polygon = self.canvas.AddPolygon(
+                points, LineWidth=2, LineColor="Black", FillColor=color,
+                FillStyle="Solide"
+            )
+            polygon.Bind(FloatCanvas.EVT_FC_LEFT_DOWN, self.selectPolygon)
+        self.canvas.ZoomToBB()
 
     def selectPolygon(self, obj):
         pass
