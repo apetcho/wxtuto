@@ -19,7 +19,10 @@ class ThreadedTask(threading.Thread):
         self.timeToDie = False
 
     def run(self):
-        pass
+        while not self.timeToDie:
+            time.sleep(self.sleepTime)
+            self.counter += 1
+            print(f"thread: {self.name:5s} count: {self.counter:d}")
 
 
 class MainFrame(wx.Frame):
