@@ -168,7 +168,24 @@ class DrawFrame(wx.Frame):
         self.canvas.ZoomToBB()
 
     def selectPolygon(self, obj):
-        pass
+        canvas = self.canvas
+        if obj in self.selectedPoygonOrig:
+            pass
+        else:
+            if self.selectedPolygon:
+                self.deselectPolygon()
+            self.selectedPoygonOrig = obj
+            self.selectedPolygon = canvas.AddPolygon(
+                obj.Points, LineWidth=2, LineColor="Red",
+                FillColor="Red", FillStyle="CrossHatch", InForeground=True
+            )
+            self.selectedPoints = canvas.AddPointSet(
+                obj.Points, Diameter=6, Color="Red", InForeground=True
+            )
+            self.selectedPoints.Bind(
+                FloatCanvas.EVT_FC_LEFT_DOWN, self.selectPointHit
+            )
+            canvas.Draw()
 
     def deselectPolygon(self):
         pass
