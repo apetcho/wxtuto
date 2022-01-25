@@ -34,7 +34,11 @@ class MyDialog(wx.Dialog):
 
 
 def main():
-    pass
+    app = wx.App()
+    dialog = MyDialog(None, title="Hello Dialog")
+    _ = dialog.ShowModal()
+    dialog.Destroy()
+    app.MainLoop()
 
 
 if __name__ == "__main__":
