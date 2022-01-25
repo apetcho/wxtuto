@@ -132,7 +132,17 @@ class DrawFrame(wx.Frame):
             dc.DrawLines(self.selectedPointNeighbors)
 
     def onLeftUp(self, event: wx.Event):
-        pass
+        if self.pointSelected:
+            self.selectedPolygon.Points[self.selectedPoints.Index] = (
+                event.GetCoords()
+            )
+            self.selectedPolygon.setPoints(self.selectedPolygon, copy=False)
+            self.selectedPoints.setPoints(
+                self.selectedPolygon.Points, copy=False
+            )
+            self.pointSelected = False
+            self.selectedPointNeighbors = None
+            self.canvas.Draw()
 
     def onLeftClick(self, event: wx.Event):
         pass
