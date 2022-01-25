@@ -162,14 +162,15 @@ class DrawFrame(wx.Frame):
             points = RandomArray.uniform(_range[0], _range[1], (6, 2))
             polygon = self.canvas.AddPolygon(
                 points, LineWidth=2, LineColor="Black", FillColor=color,
-                FillStyle="Solide"
+                FillStyle="Solid"
             )
             polygon.Bind(FloatCanvas.EVT_FC_LEFT_DOWN, self.selectPolygon)
         self.canvas.ZoomToBB()
 
     def selectPolygon(self, obj):
         canvas = self.canvas
-        if obj in self.selectedPoygonOrig:
+        if (self.selectedPoygonOrig is not None and obj in self.
+            selectedPoygonOrig):
             pass
         else:
             if self.selectedPolygon:
