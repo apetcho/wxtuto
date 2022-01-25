@@ -27,7 +27,13 @@ class ThreadedTask(threading.Thread):
 
 class MainFrame(wx.Frame):
     def __init__(self):
-        pass
+        super(MainFrame, self).__init__(None, title="GIL Test")
+        self.panel = wx.Panel(self)
+        button = wx.Button(self.panel, label="modal dialog", pos=(10, 10))
+        self.Bind(wx.EVT_BUTTON, self.onButton, button)
+        self.panel.Bind(wx.EVT_CONTEXT_MENU, self.onShowMenu)
+        button = wx.Button(self.panel, label="timed test", pos=(10, 60))
+        self.Bind(wx.EVT_BUTTON, self.onOtherButton, button)
 
     def onButton(self, event):
         pass
