@@ -73,7 +73,8 @@ class MyFrame(wx.Frame):
         self.Close()
 
     def OnFunButton(self, event):
-        pass
+        """Event handler for the button click."""
+        print("Having fun yet?")
 
 
 class MyApp(AppBaseClass):
