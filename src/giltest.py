@@ -58,7 +58,12 @@ class MainFrame(wx.Frame):
         )
 
     def onShowMenu(self, event):
-        pass
+        menu = wx.Menu()
+        menu.Append(-1, "one")
+        menu.Append(-1, "two")
+        menu.Append(-1, "three")
+        self.panel.PopupMenu(menu)
+        menu.Destroy()
 
 
 def main():
