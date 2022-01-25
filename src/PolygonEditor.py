@@ -88,7 +88,7 @@ class DrawFrame(wx.Frame):
         self.Close(True)
 
     def onCloseWindow(self, event: wx.Event):
-        pass
+        self.Destroy()
 
     def onMove(self, event: wx.Event):
         pass
