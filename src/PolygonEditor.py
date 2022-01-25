@@ -80,7 +80,9 @@ class DrawFrame(wx.Frame):
         self.canvas.ZoomToBB()
 
     def clear(self, event: wx.Event=None):
-        pass
+        self.canvas.ClearAll()
+        self.canvas.SetProjectionFun(None)
+        self.canvas.Draw()
 
     def onQuit(self, event: wx.Event):
         pass
