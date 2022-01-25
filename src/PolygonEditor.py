@@ -15,7 +15,47 @@ class DrawFrame(wx.Frame):
     """A frame used for the Floatcanvas Demo."""
 
     def __init__(self, parent, id, title, position, size):
-        pass
+        super(DrawFrame, self).__init__(parent, id, title, position, size)
+
+        # Set up the menubar
+        menubar = wx.MenuBar()
+
+        # -- file menu
+        fmenu = wx.Menu()
+        exit = fmenu.Append(wx.ID_EXIT, "", "Close Application")
+        self.Bind(wx.EVT_MENU, self.onQuit, exit)
+
+        menubar.Append(fmenu, "&File")
+
+        # View menu
+        vmenu = wx.Menu()
+        zfit = vmenu.Append(wx.ID_ANY, "Zoom to &Fit", "Zoom to fit the window")
+        self.Bind(wx.EVT_MENU, self.zoomToFit, zfit)
+        menubar.Append(vmenu, "&View")
+
+        # Help menu
+        hmenu = wx.Menu()
+        about = hmenu.Append(
+            wx.ID_ABOUT, "", "More information About this program"
+        )
+        self.Bind(wx.EVT_MENU, self.onAbout, about)
+        menubar.Append(hmenu, "&Help")
+
+        self.SetMenuBar(menubar)
+        self.CreateStatusBar()
+
+        # Add the Canvas
+        self.canvas = NavCanvas.NavCanvas(
+            self, -1, (500, 500), Debug=0,
+            BackgroundColor="DARK SLATE BLUE"       
+        ).Canvas
+        self.Bind(wx.EVT_CLOSE, self.onCloseWindow)
+
+        self.canvas.Bind(FloatCanvas.EVT_MOTION, self.onMove)
+        self.canvas.Bind(FloatCanvas.EVT_LEFT_UP, self.onLeftUp)
+        self.canvas.Bind(FloatCanvas.EVT_LEFT_DOWN, self.onLeftClick)
+
+        self.resetSelections()
 
     def resetSelections(self):
         pass
