@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import wx
 
-USE_WIT = False
+USE_WIT = True
 AppBaseClass = wx.App
 if USE_WIT:
     from wx.lib.mixins.inspection import InspectableApp
