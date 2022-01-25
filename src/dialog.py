@@ -16,7 +16,7 @@ class MyDialog(wx.Dialog):
         # Layout
         self.sizer = wx.BoxSizer(wx.VERTICAL)
         self.sizer.Add(text, 0, wx.ALL, 10)
-        self.Sizer.Add(wx.StaticLine(self), 0, wx.EXPAND)
+        self.sizer.Add(wx.StaticLine(self), 0, wx.EXPAND)
 
         # make a new sizer to hold the buttons
         row = wx.BoxSizer(wx.HORIZONTAL)
