@@ -13,7 +13,10 @@ import random
 class ThreadedTask(threading.Thread):
 
     def __init__(self, *args, **kwargs):
-        pass
+        super(ThreadedTask, self).__init__(*args, **kwargs)
+        self.counter = 0
+        self.sleepTime = random.random()/2
+        self.timeToDie = False
 
     def run(self):
         pass
