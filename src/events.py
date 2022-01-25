@@ -21,7 +21,10 @@ class MyFrame(wx.Frame):
 
 class MyApp(wx.App):
     def OnInit(self):
-        pass
+        print_("OnInit")
+        frm = MyFrame(None, title="Hello with Events", size=(480, 360))
+        frm.Show()
+        return True
 
     def OnExit(self):
         pass
