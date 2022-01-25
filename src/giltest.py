@@ -67,7 +67,21 @@ class MainFrame(wx.Frame):
 
 
 def main():
-    pass
+    threads = [
+        ThreadedTask(name="one"),
+        ThreadedTask(name="two"),
+        ThreadedTask(name="three")
+    ]
+    for t in threads:
+        t.start()
+
+    app = wx.App()
+    frm = MainFrame()
+    frm.Show()
+    app.MainLoop()
+
+    for t in threads:
+        t.timeToDie = True
 
 
 if __name__ == "__main__":
