@@ -65,7 +65,16 @@ class DrawFrame(wx.Frame):
         self.selectedPointNeighbors = None
 
     def onAbout(self, event: wx.Event):
-        pass
+        dialog = wx.MessageDialog(
+            self,
+            (
+                "This is a small program to demonstrate\n"
+                "the use of the FloatCanvas\n"
+            ),
+            "About Me", wx.OK | wx.ICON_INFORMATION
+        )
+        dialog.ShowModal()
+        dialog.Destroy()
 
     def zoomToFit(self, event: wx.Event):
         pass
