@@ -27,7 +27,8 @@ class MyApp(wx.App):
         return True
 
     def OnExit(self):
-        pass
+        print_("OnExit")
+        return 0
 
 
 def main():
