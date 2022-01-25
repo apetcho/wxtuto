@@ -91,7 +91,45 @@ class DrawFrame(wx.Frame):
         self.Destroy()
 
     def onMove(self, event: wx.Event):
-        pass
+        """Updates the status bar with the world coordinates and move a point
+        if there is one selected.
+        """
+        x, y = tuple(event.Coords)
+        self.SetStatusText(f"{x:.2f}, {y:.2f}")
+        if self.pointSelected:
+            polypoints = self.selectedPoints.Points
+            index = self.selectedPoints.Index
+            dc = wx.ClientDC(self.canvas)
+            pixelcoords = event.GetPosition()
+            dc.SetPen(wx.Pen("WHITE", 2, wx.SHORT_DASH))
+            dc.SetLogicalFunction(wx.XOR)
+            if self.selectedPointNeighbors is None:
+                self.selectedPointNeighbors = np.zeros((3, 2), np.float_)
+                if index == 0:
+                    self.selectedPointNeighbors[0] =(
+                         self.selectedPolygon.Points[-1]
+                    )
+                    self.selectedPointNeighbors[1:3] = (
+                        self.selectedPolygon.Points[:2]
+                    )
+                elif index == len(self.selectedPolygon.Points)-1:
+                    self.selectedPointNeighbors[0:2] = (
+                        self.selectedPolygon.Points[-2:]
+                    )
+                    self.selectedPointNeighbors[2] = (
+                        self.selectedPolygon[0]
+                    )
+                else:
+                    self.selectedPointNeighbors = (
+                        self.selectedPolygon.Points[index-2:index+2]
+                    )
+                self.selectedPointNeighbors = (
+                    self.canvas.WorldToPixel(self.selectedPointNeighbors)
+                )
+            else:
+                dc.DrawLines(self.selectedPointNeighbors)
+            self.selectedPointNeighbors[1] = pixelcoords
+            dc.DrawLines(self.selectedPointNeighbors)
 
     def onLeftUp(self, event: wx.Event):
         pass
