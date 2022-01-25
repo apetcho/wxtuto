@@ -77,7 +77,7 @@ class DrawFrame(wx.Frame):
         dialog.Destroy()
 
     def zoomToFit(self, event: wx.Event):
-        pass
+        self.canvas.ZoomToBB()
 
     def clear(self, event: wx.Event=None):
         pass
