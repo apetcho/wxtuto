@@ -199,7 +199,9 @@ class DrawFrame(wx.Frame):
         self.resetSelections()
 
     def selectPointHit(self, pointSet):
-        pass
+        pointSet.Index = pointSet.FindClosestPoint(pointSet.HitCoords)
+        print(f"point#{pointSet.Index:i} hit")
+        self.pointSelected = True
 
 
 class PolygonEditor(wx.App):
