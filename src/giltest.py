@@ -41,7 +41,21 @@ class MainFrame(wx.Frame):
         dialog.Destroy()
 
     def onOtherButton(self, event):
-        pass
+        # A simplistic benchmark test that times many repetitions of some
+        # simple operations so they can be tested with and without releasing
+        # the GIL
+        start = time.time()
+        reps = 100000
+        for _ in range(reps):
+            size = wx.Size(100, 100)
+            for _ in range(10):
+                size.DecBy(4, 6)
+            for _ in range(10):
+                size.IncBy(4, 6)
+        wx.MessageBox(
+            f"{reps:d} reps performed in {(time.time()-start):f}",
+            "Results"
+        )
 
     def onShowMenu(self, event):
         pass
