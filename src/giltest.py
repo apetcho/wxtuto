@@ -36,7 +36,9 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_BUTTON, self.onOtherButton, button)
 
     def onButton(self, event):
-        pass
+        dialog = wx.Dialog(self, title="close this dialog", size=(300, 150))
+        dialog.ShowModal()
+        dialog.Destroy()
 
     def onOtherButton(self, event):
         pass
