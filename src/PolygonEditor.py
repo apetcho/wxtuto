@@ -219,7 +219,8 @@ class PolygonEditor(wx.App):
 
 
 def main():
-    pass
+    app = PolygonEditor()
+    app.MainLoop()
 
 
 if __name__ == "__main__":
